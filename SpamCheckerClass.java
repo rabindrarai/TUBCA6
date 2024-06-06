@@ -1,6 +1,20 @@
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+/**
+ * The Spamhaus Block List (SBL) is a list of IP addresses that Spamhaus
+ * considers to be involved in sending spam.
+ * You can use the DNS-based Block List (DNSBL) to check if an IP address is
+ * listed.
+ * Here’s a simple Java example to perform this check using Java's DNS lookup
+ * capabilities.
+ *
+ * First, you need to convert the IP address into a format suitable for querying
+ * the Spamhaus DNSBL.
+ * The format is d.e.c.b.zen.spamhaus.org, where a.b.c.d is the IP address in
+ * reverse order.
+ **/
+
 public class SpamCheckerClass {
     private static final String SPAMHAUS_DNS = "zen.spamhaus.org";
 
@@ -29,6 +43,7 @@ public class SpamCheckerClass {
     }
 
     private static String getReverseIp(String ipAddress) {
+        // Converts the IP address into the required reversed format for querying the DNSBL.
         String[] parts = ipAddress.split("\\.");
         return parts[3] + "." + parts[2] + "." + parts[1] + "." + parts[0];
     }
